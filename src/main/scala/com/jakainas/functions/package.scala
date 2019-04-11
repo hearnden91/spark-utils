@@ -40,7 +40,7 @@ package object functions {
     LocalDate.parse(date, DateTimeFormatter.ISO_DATE).minusDays(-numDays).toString
   }
 
-  implicit class DatasetFunctions[T](val ds: Dataset[T]) {
+  implicit class DatasetFunctions[T](val ds: Dataset[T]) extends AnyVal {
     /**
       * Remove duplicate rows using some column criteria for grouping and ordering
       * @param partCols - How to group rows.  Only 1 row from each group will be in the result
@@ -89,4 +89,5 @@ package object functions {
       case (newDF, (currColName, newColName)) => newDF.withColumnRenamed(currColName, newColName)
     }
   }
+
 }
